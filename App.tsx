@@ -5,9 +5,10 @@
  * @format
  */
 
-import React from 'react';
 import type { PropsWithChildren } from 'react';
+import React from 'react';
 import {
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -58,6 +59,10 @@ function Section({ children, title }: SectionProps): React.JSX.Element {
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
+  const onPressButton = function () {
+    console.log(isDarkMode);
+  };
+
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -76,6 +81,9 @@ function App(): React.JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
+          <View>
+            <Button onPress={onPressButton} title="Press Me" testID='my-button' />
+          </View>
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.tsx</Text> to change this
             screen and then come back to see your edits.
